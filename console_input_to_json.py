@@ -6,7 +6,18 @@ def get_console_input_weapon(index):
     name = input('Enter weapon name: ')
     flavour = input('Enter weapon type: ')
     damage = int(input('Enter max weapon damage: '))
-    effect = input('Enter special effect: ')
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+
+    for i in range(len(t_dict)):
+        current_trait = 'trait_{}'.format(i)
+        if t_dict[current_trait] != 'none':
+            trait = input('Enter special effect: ')
+            if trait == 'none':
+                for j in range(i, 5):
+                    t_dict['trait_{}'.format(j)] = 'none'
+            else:
+                t_dict[current_trait] = trait
+
     unique = input('Unique? (t/f): ')
 
     if unique == "t":
@@ -14,11 +25,11 @@ def get_console_input_weapon(index):
     else:
         unique = False
 
-    attributes = {"name": name,
-                  "type": flavour,
-                  "damage": damage,
-                  "aux_effect": effect,
-                  "unique": unique
+    attributes = {'name': name,
+                  'type': flavour,
+                  'damage': damage,
+                  'traits': t_dict,
+                  'unique': unique
                   }
     attributes = {weapon: attributes}
     return attributes
@@ -35,18 +46,18 @@ def print_weapon_info(attr_dict):
 
 def append_dictionary(dictionary, dict_type):
     switch_dict = {
-        'classes': dictionary.update(get_console_input_class(len(dictionary))),
-        'races': dictionary.update(get_console_input_race(len(dictionary))),
+        # 'classes': dictionary.update(get_console_input_class(len(dictionary))),
+        # 'races': dictionary.update(get_console_input_race(len(dictionary))),
         'weapons': dictionary.update(get_console_input_weapon(len(dictionary))),
-        'armour': dictionary.update(get_console_input_armour(len(dictionary))),
-        'traits': dictionary.update(get_console_input_trait(len(dictionary))),
-        'weapon_traits': dictionary.update(get_console_input_weapon_trait(len(dictionary))),
-        'armour_traits': dictionary.update(get_console_input_armour_trait(len(dictionary))),
-        'item_traits': dictionary.update(get_console_input_item_trait(len(dictionary))),
-        'items': dictionary.update(get_console_input_items(len(dictionary))),
-        'characters': dictionary.update(get_console_input_character(len(dictionary))),
+        # 'armour': dictionary.update(get_console_input_armour(len(dictionary))),
+        # 'traits': dictionary.update(get_console_input_trait(len(dictionary))),
+        # 'weapon_traits': dictionary.update(get_console_input_weapon_trait(len(dictionary))),
+        # 'armour_traits': dictionary.update(get_console_input_armour_trait(len(dictionary))),
+        # 'item_traits': dictionary.update(get_console_input_item_trait(len(dictionary))),
+        # 'items': dictionary.update(get_console_input_items(len(dictionary))),
+        # 'characters': dictionary.update(get_console_input_character(len(dictionary))),
     }
-    switch_dict[dict_type]()
+
 
 
 def dump_to_json(dictionary, directory):
