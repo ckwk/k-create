@@ -1,7 +1,6 @@
 import json
 
 
-
 def get_console_input_weapon(index):
     weapon = 'weapon {}'.format(index)
     name = input('Enter weapon name: ')
@@ -39,6 +38,7 @@ def get_console_input_weapon(index):
 def get_console_input_trait(index):
     trait = 'trait {}'.format(index)
     name = input('Enter trait name: ')
+    flavour = input('Enter trait type: ')
     pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
     cons = {'con_0': '', 'con_1': '', 'con_2': ''}
 
@@ -65,6 +65,45 @@ def get_console_input_trait(index):
                 cons[current_con] = con
 
     attributes = {'name': name,
+                  'type': flavour,
+                  'pros': pros,
+                  'cons': cons
+                  }
+    attributes = {trait: attributes}
+    return attributes
+
+
+def get_console_input_enchantment(index):
+    trait = 'trait {}'.format(index)
+    name = input('Enter trait name: ')
+    flavour = input('Enter trait type: ')
+    pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
+    cons = {'con_0': '', 'con_1': '', 'con_2': ''}
+
+    # Add positive effects to the 'pros' dictionary
+    for i in range(len(pros)):
+        current_pro = 'pro_{}'.format(i)
+        if pros[current_pro] != 'none':
+            pro = input('Enter positive trait effect: ')
+            if pro == 'none':
+                for j in range(i, len(pros)):
+                    pros['pro_{}'.format(j)] = 'none'
+            else:
+                pros[current_pro] = pro
+
+    # Add negative effects to the 'cons' dictionary
+    for i in range(len(cons)):
+        current_con = 'con_{}'.format(i)
+        if cons[current_con] != 'none':
+            con = input('Enter negative trait effect: ')
+            if con == 'none':
+                for j in range(i, len(cons)):
+                    cons['con_{}'.format(j)] = 'none'
+            else:
+                cons[current_con] = con
+
+    attributes = {'name': name,
+                  'type': flavour,
                   'pros': pros,
                   'cons': cons
                   }
@@ -88,9 +127,7 @@ def append_dictionary(dictionary, dict_type):
         'weapons': lambda: dictionary.update(get_console_input_weapon(len(dictionary))),
         'armour': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
         'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
-        'weapon_traits': lambda: dictionary.update(get_console_input_weapon_trait(len(dictionary))),
-        'armour_traits': lambda: dictionary.update(get_console_input_armour_trait(len(dictionary))),
-        'item_traits': lambda: dictionary.update(get_console_input_item_trait(len(dictionary))),
+        'enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary)),
         'items': lambda: dictionary.update(get_console_input_items(len(dictionary))),
         'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
     }
@@ -111,18 +148,18 @@ def read_json_from_file(directory):
     return dictionary
 
 
-class_dict = read_json_from_file('classes.json')
-race_dict = read_json_from_file('races.json')
-weapon_dict = read_json_from_file('weapons.json')
-armour_dict = read_json_from_file('armour.json')
-trait_dict = read_json_from_file('traits.json')
-weapon_trait_dict = read_json_from_file('weapon_traits.json')
-armour_trait_dict = read_json_from_file('armour_traits.json')
-item_trait_dict = read_json_from_file('item_traits.json')
-item_dict = read_json_from_file('items.json')
-character_dict = read_json_from_file('characters.json')
+class_dict = read_json_from_file('data/classes.json')
+race_dict = read_json_from_file('data/races.json')
+weapon_dict = read_json_from_file('data/weapons.json')
+armour_dict = read_json_from_file('data/armour.json')
+trait_dict = read_json_from_file('data/traits.json')
+weapon_ench_dict = read_json_from_file('data/weapon_enchantments.json')
+armour_ench_dict = read_json_from_file('data/armour_enchantments.json')
+item_ench_dict = read_json_from_file('data/item_enchantments.json')
+item_dict = read_json_from_file('data/items.json')
+character_dict = read_json_from_file('data/characters.json')
 
 #append_dictionary(weapon_dict, 'weapons')
-append_dictionary(trait_dict, 'traits')
-dump_to_json(trait_dict, 'traits.json')
+append_dictionary(weapon_ench_dict, 'enchantments')
+dump_to_json(weapon_ench_dict, 'weapon_enchantments.json')
 #dump_to_json(weapon_dict, 'weapons.json')
