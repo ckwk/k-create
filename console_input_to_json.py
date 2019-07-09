@@ -1,6 +1,7 @@
 import json
 
 
+
 def get_console_input_weapon(index):
     weapon = 'weapon {}'.format(index)
     name = input('Enter weapon name: ')
@@ -13,7 +14,7 @@ def get_console_input_weapon(index):
         if t_dict[current_trait] != 'none':
             trait = input('Enter special effect: ')
             if trait == 'none':
-                for j in range(i, 5):
+                for j in range(i, len(t_dict)):
                     t_dict['trait_{}'.format(j)] = 'none'
             else:
                 t_dict[current_trait] = trait
@@ -35,6 +36,42 @@ def get_console_input_weapon(index):
     return attributes
 
 
+def get_console_input_trait(index):
+    trait = 'trait {}'.format(index)
+    name = input('Enter trait name: ')
+    pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
+    cons = {'con_0': '', 'con_1': '', 'con_2': ''}
+
+    # Add positive effects to the 'pros' dictionary
+    for i in range(len(pros)):
+        current_pro = 'pro_{}'.format(i)
+        if pros[current_pro] != 'none':
+            pro = input('Enter positive trait effect: ')
+            if pro == 'none':
+                for j in range(i, len(pros)):
+                    pros['pro_{}'.format(j)] = 'none'
+            else:
+                pros[current_pro] = pro
+
+    # Add negative effects to the 'cons' dictionary
+    for i in range(len(cons)):
+        current_con = 'con_{}'.format(i)
+        if cons[current_con] != 'none':
+            con = input('Enter negative trait effect: ')
+            if con == 'none':
+                for j in range(i, len(cons)):
+                    cons['con_{}'.format(j)] = 'none'
+            else:
+                cons[current_con] = con
+
+    attributes = {'name': name,
+                  'pros': pros,
+                  'cons': cons
+                  }
+    attributes = {trait: attributes}
+    return attributes
+
+
 def print_weapon_info(attr_dict):
     key = list(attr_dict.keys())[0]
     print("Name: {}\n".format(attr_dict[key]["name"]),
@@ -46,18 +83,18 @@ def print_weapon_info(attr_dict):
 
 def append_dictionary(dictionary, dict_type):
     switch_dict = {
-        # 'classes': dictionary.update(get_console_input_class(len(dictionary))),
-        # 'races': dictionary.update(get_console_input_race(len(dictionary))),
-        'weapons': dictionary.update(get_console_input_weapon(len(dictionary))),
-        # 'armour': dictionary.update(get_console_input_armour(len(dictionary))),
-        # 'traits': dictionary.update(get_console_input_trait(len(dictionary))),
-        # 'weapon_traits': dictionary.update(get_console_input_weapon_trait(len(dictionary))),
-        # 'armour_traits': dictionary.update(get_console_input_armour_trait(len(dictionary))),
-        # 'item_traits': dictionary.update(get_console_input_item_trait(len(dictionary))),
-        # 'items': dictionary.update(get_console_input_items(len(dictionary))),
-        # 'characters': dictionary.update(get_console_input_character(len(dictionary))),
+        'classes': lambda: dictionary.update(get_console_input_class(len(dictionary))),
+        'races': lambda: dictionary.update(get_console_input_race(len(dictionary))),
+        'weapons': lambda: dictionary.update(get_console_input_weapon(len(dictionary))),
+        'armour': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
+        'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
+        'weapon_traits': lambda: dictionary.update(get_console_input_weapon_trait(len(dictionary))),
+        'armour_traits': lambda: dictionary.update(get_console_input_armour_trait(len(dictionary))),
+        'item_traits': lambda: dictionary.update(get_console_input_item_trait(len(dictionary))),
+        'items': lambda: dictionary.update(get_console_input_items(len(dictionary))),
+        'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
     }
-
+    switch_dict[dict_type]()
 
 
 def dump_to_json(dictionary, directory):
@@ -85,5 +122,7 @@ item_trait_dict = read_json_from_file('item_traits.json')
 item_dict = read_json_from_file('items.json')
 character_dict = read_json_from_file('characters.json')
 
-append_dictionary(weapon_dict, 'weapons')
-dump_to_json(weapon_dict, 'weapons.json')
+#append_dictionary(weapon_dict, 'weapons')
+append_dictionary(trait_dict, 'traits')
+dump_to_json(trait_dict, 'traits.json')
+#dump_to_json(weapon_dict, 'weapons.json')
