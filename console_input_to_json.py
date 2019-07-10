@@ -165,6 +165,33 @@ def get_console_input_enchantment(index):
     return attributes
 
 
+def get_console_input_item(index):
+    weapon = 'item {}'.format(index)
+    name = input('Enter item name: ')
+    flavour = input('Enter item type: ')
+
+    # Add enchantments
+    enchantment = input('Enter enchantment: ')
+    if enchantment != 'none':
+        for key in weapon_ench_dict:
+            if weapon_ench_dict[key]["name"] == enchantment:
+                enchantment = weapon_ench_dict.get(key)
+
+    unique = input('Unique? (t/f): ')
+    if unique == "t":
+        unique = True
+    else:
+        unique = False
+
+    attributes = {'name': name,
+                  'type': flavour,
+                  'enchantment': enchantment,
+                  'unique': unique
+                  }
+    attributes = {weapon: attributes}
+    return attributes
+
+
 def append_dictionary(dictionary, dict_type):
     switch_dict = {
         'classes': lambda: dictionary.update(get_console_input_class(len(dictionary))),
