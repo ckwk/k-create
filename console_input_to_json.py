@@ -1,6 +1,56 @@
 import json
 
 
+def get_console_input_class(index):
+    char_class = 'class {}'.format(index)
+    name = input('Enter class name: ')
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+
+    # Add traits
+    for i in range(len(t_dict)):
+        current_trait = 'trait_{}'.format(i)
+        if t_dict[current_trait] != 'none':
+            trait = input('Enter possible trait: ')
+            if trait == 'none':
+                for j in range(i, len(t_dict)):
+                    t_dict['trait_{}'.format(j)] = 'none'
+            else:
+                for key in class_trait_dict:
+                    if class_trait_dict[key]["name"] == trait:
+                        trait = class_trait_dict.get(key)
+
+    attributes = {'name': name,
+                  'traits': t_dict,
+                  }
+    attributes = {char_class: attributes}
+    return attributes
+
+
+def get_console_input_race(index):
+    race = 'race {}'.format(index)
+    name = input('Enter race name: ')
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+
+    # Add traits
+    for i in range(len(t_dict)):
+        current_trait = 'trait_{}'.format(i)
+        if t_dict[current_trait] != 'none':
+            trait = input('Enter possible trait: ')
+            if trait == 'none':
+                for j in range(i, len(t_dict)):
+                    t_dict['trait_{}'.format(j)] = 'none'
+            else:
+                for key in race_trait_dict:
+                    if race_trait_dict[key]["name"] == trait:
+                        trait = race_trait_dict.get(key)
+
+    attributes = {'name': name,
+                  'traits': t_dict,
+                  }
+    attributes = {race: attributes}
+    return attributes
+
+
 def get_console_input_weapon(index):
     weapon = 'weapon {}'.format(index)
     name = input('Enter weapon name: ')
@@ -173,9 +223,9 @@ def get_console_input_item(index):
     # Add enchantments
     enchantment = input('Enter enchantment: ')
     if enchantment != 'none':
-        for key in weapon_ench_dict:
-            if weapon_ench_dict[key]["name"] == enchantment:
-                enchantment = weapon_ench_dict.get(key)
+        for key in item_ench_dict:
+            if item_ench_dict[key]["name"] == enchantment:
+                enchantment = item_ench_dict.get(key)
 
     unique = input('Unique? (t/f): ')
     if unique == "t":
@@ -200,7 +250,7 @@ def append_dictionary(dictionary, dict_type):
         'armour': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
         'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
         'enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
-        'items': lambda: dictionary.update(get_console_input_items(len(dictionary))),
+        'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
         'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
     }
     switch_dict[dict_type]()
@@ -225,6 +275,8 @@ race_dict = read_json_from_file('data/races.json')
 weapon_dict = read_json_from_file('data/weapons.json')
 armour_dict = read_json_from_file('data/armour.json')
 trait_dict = read_json_from_file('data/traits.json')
+race_trait_dict = read_json_from_file('data/race_traits.json')
+class_trait_dict = read_json_from_file('data/class_traits.json')
 weapon_ench_dict = read_json_from_file('data/weapon_enchantments.json')
 armour_ench_dict = read_json_from_file('data/armour_enchantments.json')
 item_ench_dict = read_json_from_file('data/item_enchantments.json')
