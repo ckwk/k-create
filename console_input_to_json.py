@@ -8,6 +8,7 @@ def get_console_input_weapon(index):
     damage = int(input('Enter max weapon damage: '))
     t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
 
+    # Add traits
     for i in range(len(t_dict)):
         current_trait = 'trait_{}'.format(i)
         if t_dict[current_trait] != 'none':
@@ -16,8 +17,11 @@ def get_console_input_weapon(index):
                 for j in range(i, len(t_dict)):
                     t_dict['trait_{}'.format(j)] = 'none'
             else:
-                t_dict[current_trait] = trait
+                for key in trait_dict:
+                    if trait_dict[key]["name"] == trait:
+                        trait = trait_dict.get(key)
 
+    # Add enchantments
     enchantment = input('Enter enchantment: ')
     if enchantment != 'none':
         for key in weapon_ench_dict:
@@ -38,6 +42,50 @@ def get_console_input_weapon(index):
                   'unique': unique
                   }
     attributes = {weapon: attributes}
+    return attributes
+
+
+def get_console_input_armour(index):
+    armour = 'armour {}'.format(index)
+    name = input('Enter armour name: ')
+    flavour = input('Enter armour type: ')
+    resistance = int(input('Enter armour resistance: '))
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+
+    # Add traits
+    for i in range(len(t_dict)):
+        current_trait = 'trait_{}'.format(i)
+        if t_dict[current_trait] != 'none':
+            trait = input('Enter possible trait: ')
+            if trait == 'none':
+                for j in range(i, len(t_dict)):
+                    t_dict['trait_{}'.format(j)] = 'none'
+            else:
+                for key in trait_dict:
+                    if trait_dict[key]["name"] == trait:
+                        trait = trait_dict.get(key)
+
+    # Add enchantments
+    enchantment = input('Enter enchantment: ')
+    if enchantment != 'none':
+        for key in armour_ench_dict:
+            if armour_ench_dict[key]["name"] == enchantment:
+                enchantment = armour_ench_dict.get(key)
+
+    unique = input('Unique? (t/f): ')
+    if unique == "t":
+        unique = True
+    else:
+        unique = False
+
+    attributes = {'name': name,
+                  'type': flavour,
+                  'resistance': resistance,
+                  'traits': t_dict,
+                  'enchantment': enchantment,
+                  'unique': unique
+                  }
+    attributes = {armour: attributes}
     return attributes
 
 
