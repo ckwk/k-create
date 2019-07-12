@@ -56,6 +56,19 @@ def get_console_input_weapon(index):
     name = input('Enter weapon name: ')
     flavour = input('Enter weapon type: ')
     damage = int(input('Enter max weapon damage: '))
+
+    # Add requirements to the 'requirements' dictionary
+    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
+    for i in range(len(requirements)):
+        current_req = 'req_{}'.format(i)
+        if requirements[current_req] != 'none':
+            req = input('Enter stat requirement: ')
+            if req == 'none':
+                for j in range(i, len(requirements)):
+                    requirements['req_{}'.format(j)] = 'none'
+            else:
+                requirements[current_req] = req
+
     t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
 
     # Add traits
@@ -87,6 +100,7 @@ def get_console_input_weapon(index):
     attributes = {'name': name,
                   'type': flavour,
                   'damage': damage,
+                  'requirements': requirements,
                   'traits': t_dict,
                   'enchantment': enchantment,
                   'unique': unique
@@ -100,9 +114,21 @@ def get_console_input_armour(index):
     name = input('Enter armour name: ')
     flavour = input('Enter armour type: ')
     resistance = int(input('Enter armour resistance: '))
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+
+    # Add requirements to the 'requirements' dictionary
+    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
+    for i in range(len(requirements)):
+        current_req = 'req_{}'.format(i)
+        if requirements[current_req] != 'none':
+            req = input('Enter stat requirement: ')
+            if req == 'none':
+                for j in range(i, len(requirements)):
+                    requirements['req_{}'.format(j)] = 'none'
+            else:
+                requirements[current_req] = req
 
     # Add traits
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
     for i in range(len(t_dict)):
         current_trait = 'trait_{}'.format(i)
         if t_dict[current_trait] != 'none':
@@ -131,6 +157,7 @@ def get_console_input_armour(index):
     attributes = {'name': name,
                   'type': flavour,
                   'resistance': resistance,
+                  'requirements': requirements,
                   'traits': t_dict,
                   'enchantment': enchantment,
                   'unique': unique
