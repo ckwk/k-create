@@ -143,35 +143,22 @@ def get_console_input_trait(index):
     trait = 'trait {}'.format(index)
     name = input('Enter trait name: ')
     flavour = input('Enter trait type: ')
-    pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
-    cons = {'con_0': '', 'con_1': '', 'con_2': ''}
+    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
 
     # Add positive effects to the 'pros' dictionary
-    for i in range(len(pros)):
-        current_pro = 'pro_{}'.format(i)
-        if pros[current_pro] != 'none':
+    for i in range(len(effects)):
+        current_effect = 'pro_{}'.format(i)
+        if effects[current_effect] != 'none':
             pro = input('Enter positive trait effect: ')
             if pro == 'none':
-                for j in range(i, len(pros)):
-                    pros['pro_{}'.format(j)] = 'none'
+                for j in range(i, len(effects)):
+                    effects['pro_{}'.format(j)] = 'none'
             else:
-                pros[current_pro] = pro
-
-    # Add negative effects to the 'cons' dictionary
-    for i in range(len(cons)):
-        current_con = 'con_{}'.format(i)
-        if cons[current_con] != 'none':
-            con = input('Enter negative trait effect: ')
-            if con == 'none':
-                for j in range(i, len(cons)):
-                    cons['con_{}'.format(j)] = 'none'
-            else:
-                cons[current_con] = con
+                effects[current_effect] = pro
 
     attributes = {'name': name,
                   'type': flavour,
-                  'pros': pros,
-                  'cons': cons
+                  'effects': effects,
                   }
     attributes = {trait: attributes}
     return attributes
