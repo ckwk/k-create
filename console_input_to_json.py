@@ -145,22 +145,59 @@ def get_console_input_trait(index):
     flavour = input('Enter trait type: ')
     effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
 
-    # Add positive effects to the 'pros' dictionary
+    # Add effects to the 'effects' dictionary
     for i in range(len(effects)):
-        current_effect = 'pro_{}'.format(i)
+        current_effect = 'effect_{}'.format(i)
         if effects[current_effect] != 'none':
-            pro = input('Enter positive trait effect: ')
-            if pro == 'none':
+            effect = input('Enter trait effect: ')
+            if effect == 'none':
                 for j in range(i, len(effects)):
-                    effects['pro_{}'.format(j)] = 'none'
+                    effects['effect_{}'.format(j)] = 'none'
             else:
-                effects[current_effect] = pro
+                effects[current_effect] = effect
 
     attributes = {'name': name,
                   'type': flavour,
                   'effects': effects,
                   }
     attributes = {trait: attributes}
+    return attributes
+
+
+def get_console_input_ability(index):
+    ability = 'ability {}'.format(index)
+    name = input('Enter ability name: ')
+    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
+
+    # Add requirements to the 'requirements' dictionary
+    for i in range(len(requirements)):
+        current_req = 'req_{}'.format(i)
+        if requirements[current_req] != 'none':
+            req = input('Enter stat requirement: ')
+            if req == 'none':
+                for j in range(i, len(requirements)):
+                    requirements['req_{}'.format(j)] = 'none'
+            else:
+                requirements[current_req] = req
+
+    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
+
+    # Add effects to the 'effects' dictionary
+    for i in range(len(effects)):
+        current_effect = 'effect_{}'.format(i)
+        if effects[current_effect] != 'none':
+            effect = input('Enter ability effect: ')
+            if effect == 'none':
+                for j in range(i, len(effects)):
+                    effects['effect_{}'.format(j)] = 'none'
+            else:
+                effects[current_effect] = effect
+
+    attributes = {'name': name,
+                  'requirements': requirements,
+                  'effects': effects,
+                  }
+    attributes = {ability: attributes}
     return attributes
 
 
@@ -236,6 +273,7 @@ def append_dictionary(dictionary, dict_type):
         'weapons': lambda: dictionary.update(get_console_input_weapon(len(dictionary))),
         'armour': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
         'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
+        'abilities': lambda: dictionary.update(get_console_input_ability(len(dictionary))),
         'enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
         'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
         'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
@@ -263,7 +301,7 @@ weapon_dict = read_json_from_file('data/weapons.json')
 armour_dict = read_json_from_file('data/armour.json')
 trait_dict = read_json_from_file('data/traits.json')
 race_trait_dict = read_json_from_file('data/race_traits.json')
-class_trait_dict = read_json_from_file('data/class_traits.json')
+ability_dict = read_json_from_file('data/abilities.json')
 weapon_ench_dict = read_json_from_file('data/weapon_enchantments.json')
 armour_ench_dict = read_json_from_file('data/armour_enchantments.json')
 item_ench_dict = read_json_from_file('data/item_enchantments.json')
