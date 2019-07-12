@@ -1,37 +1,13 @@
 import json
 
 
-def get_console_input_class(index):
-    char_class = 'class {}'.format(index)
-    name = input('Enter class name: ')
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
-
-    # Add traits
-    for i in range(len(t_dict)):
-        current_trait = 'trait_{}'.format(i)
-        if t_dict[current_trait] != 'none':
-            trait = input('Enter possible trait: ')
-            if trait == 'none':
-                for j in range(i, len(t_dict)):
-                    t_dict['trait_{}'.format(j)] = 'none'
-            else:
-                for key in class_trait_dict:
-                    if class_trait_dict[key]["name"] == trait:
-                        trait = class_trait_dict.get(key)
-
-    attributes = {'name': name,
-                  'traits': t_dict,
-                  }
-    attributes = {char_class: attributes}
-    return attributes
-
-
 def get_console_input_race(index):
     race = 'race {}'.format(index)
     name = input('Enter race name: ')
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
+    description = input('Enter description: ')
 
     # Add traits
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
     for i in range(len(t_dict)):
         current_trait = 'trait_{}'.format(i)
         if t_dict[current_trait] != 'none':
@@ -45,7 +21,8 @@ def get_console_input_race(index):
                         trait = race_trait_dict.get(key)
 
     attributes = {'name': name,
-                  'traits': t_dict,
+                  'description': description,
+                  'traits': t_dict
                   }
     attributes = {race: attributes}
     return attributes
@@ -55,6 +32,7 @@ def get_console_input_weapon(index):
     weapon = 'weapon {}'.format(index)
     name = input('Enter weapon name: ')
     flavour = input('Enter weapon type: ')
+    description = input('Enter description: ')
     damage = int(input('Enter max weapon damage: '))
 
     # Add requirements to the 'requirements' dictionary
@@ -69,9 +47,8 @@ def get_console_input_weapon(index):
             else:
                 requirements[current_req] = req
 
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
-
     # Add traits
+    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
     for i in range(len(t_dict)):
         current_trait = 'trait_{}'.format(i)
         if t_dict[current_trait] != 'none':
@@ -81,7 +58,7 @@ def get_console_input_weapon(index):
                     t_dict['trait_{}'.format(j)] = 'none'
             else:
                 for key in trait_dict:
-                    if trait_dict[key]["name"] == trait:
+                    if trait_dict[key]["name"] == trait and trait_dict[key]["type"] == 'weapon':
                         trait = trait_dict.get(key)
 
     # Add enchantments
@@ -91,6 +68,7 @@ def get_console_input_weapon(index):
             if weapon_ench_dict[key]["name"] == enchantment:
                 enchantment = weapon_ench_dict.get(key)
 
+    # Is the item unique?
     unique = input('Unique? (t/f): ')
     if unique == "t":
         unique = True
@@ -99,6 +77,7 @@ def get_console_input_weapon(index):
 
     attributes = {'name': name,
                   'type': flavour,
+                  'description': description,
                   'damage': damage,
                   'requirements': requirements,
                   'traits': t_dict,
@@ -113,6 +92,7 @@ def get_console_input_armour(index):
     armour = 'armour {}'.format(index)
     name = input('Enter armour name: ')
     flavour = input('Enter armour type: ')
+    description = input('Enter description: ')
     resistance = int(input('Enter armour resistance: '))
 
     # Add requirements to the 'requirements' dictionary
@@ -138,7 +118,7 @@ def get_console_input_armour(index):
                     t_dict['trait_{}'.format(j)] = 'none'
             else:
                 for key in trait_dict:
-                    if trait_dict[key]["name"] == trait:
+                    if trait_dict[key]["name"] == trait and trait_dict[key]["type"] == 'armour':
                         trait = trait_dict.get(key)
 
     # Add enchantments
@@ -148,6 +128,7 @@ def get_console_input_armour(index):
             if armour_ench_dict[key]["name"] == enchantment:
                 enchantment = armour_ench_dict.get(key)
 
+    # Is the item unique?
     unique = input('Unique? (t/f): ')
     if unique == "t":
         unique = True
@@ -156,6 +137,7 @@ def get_console_input_armour(index):
 
     attributes = {'name': name,
                   'type': flavour,
+                  'description': description,
                   'resistance': resistance,
                   'requirements': requirements,
                   'traits': t_dict,
@@ -170,9 +152,10 @@ def get_console_input_trait(index):
     trait = 'trait {}'.format(index)
     name = input('Enter trait name: ')
     flavour = input('Enter trait type: ')
-    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
+    description = input('Enter description: ')
 
     # Add effects to the 'effects' dictionary
+    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
     for i in range(len(effects)):
         current_effect = 'effect_{}'.format(i)
         if effects[current_effect] != 'none':
@@ -185,6 +168,7 @@ def get_console_input_trait(index):
 
     attributes = {'name': name,
                   'type': flavour,
+                  'description': description,
                   'effects': effects,
                   }
     attributes = {trait: attributes}
@@ -194,9 +178,10 @@ def get_console_input_trait(index):
 def get_console_input_ability(index):
     ability = 'ability {}'.format(index)
     name = input('Enter ability name: ')
-    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
+    description = input('Enter description: ')
 
     # Add requirements to the 'requirements' dictionary
+    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
     for i in range(len(requirements)):
         current_req = 'req_{}'.format(i)
         if requirements[current_req] != 'none':
@@ -207,9 +192,8 @@ def get_console_input_ability(index):
             else:
                 requirements[current_req] = req
 
-    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
-
     # Add effects to the 'effects' dictionary
+    effects = {'effect_0': '', 'effect_1': '', 'effect_2': ''}
     for i in range(len(effects)):
         current_effect = 'effect_{}'.format(i)
         if effects[current_effect] != 'none':
@@ -221,6 +205,7 @@ def get_console_input_ability(index):
                 effects[current_effect] = effect
 
     attributes = {'name': name,
+                  'description': description,
                   'requirements': requirements,
                   'effects': effects,
                   }
@@ -232,10 +217,9 @@ def get_console_input_enchantment(index):
     enchantment = 'enchantment {}'.format(index)
     name = input('Enter enchantment name: ')
     flavour = input('Enter enchantment type: ')
-    pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
-    cons = {'con_0': '', 'con_1': '', 'con_2': ''}
 
     # Add positive effects to the 'pros' dictionary
+    pros = {'pro_0': '', 'pro_1': '', 'pro_2': ''}
     for i in range(len(pros)):
         current_pro = 'pro_{}'.format(i)
         if pros[current_pro] != 'none':
@@ -247,6 +231,7 @@ def get_console_input_enchantment(index):
                 pros[current_pro] = pro
 
     # Add negative effects to the 'cons' dictionary
+    cons = {'con_0': '', 'con_1': '', 'con_2': ''}
     for i in range(len(cons)):
         current_con = 'con_{}'.format(i)
         if cons[current_con] != 'none':
@@ -278,6 +263,7 @@ def get_console_input_item(index):
             if item_ench_dict[key]["name"] == enchantment:
                 enchantment = item_ench_dict.get(key)
 
+    # Is the item unique?
     unique = input('Unique? (t/f): ')
     if unique == "t":
         unique = True
@@ -295,24 +281,30 @@ def get_console_input_item(index):
 
 def append_dictionary(dictionary, dict_type):
     switch_dict = {
-        'classes': lambda: dictionary.update(get_console_input_class(len(dictionary))),
-        'races': lambda: dictionary.update(get_console_input_race(len(dictionary))),
-        'weapons': lambda: dictionary.update(get_console_input_weapon(len(dictionary))),
-        'armour': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
-        'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
         'abilities': lambda: dictionary.update(get_console_input_ability(len(dictionary))),
-        'enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
-        'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
+        'armours': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
+        'armour_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
         'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
+        'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
+        'item_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
+        'races': lambda: dictionary.update(get_console_input_race(len(dictionary))),
+        'race_traits': lambda: dictionary.update(get_console_input_race(len(dictionary))),
+        'weapons': lambda: dictionary.update(get_console_input_weapon(len(dictionary))),
+
+        'traits': lambda: dictionary.update(get_console_input_trait(len(dictionary))),
+
+        'enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
+
+
     }
     switch_dict[dict_type]()
 
 
-def dump_to_json(dictionary, directory):
+def dump_to_json(dic, directory):
     outfile = open(directory, 'w')
-    json.dump(dictionary, outfile)
+    json.dump(dic, outfile)
     outfile.close()
-    print(json.dumps(dictionary, indent=4))
+    print(json.dumps(dic, indent=4))
 
 
 def read_json_from_file(directory):
@@ -322,20 +314,45 @@ def read_json_from_file(directory):
     return dictionary
 
 
-class_dict = read_json_from_file('data/classes.json')
-race_dict = read_json_from_file('data/races.json')
-weapon_dict = read_json_from_file('data/weapons.json')
-armour_dict = read_json_from_file('data/armour.json')
-trait_dict = read_json_from_file('data/traits.json')
-race_trait_dict = read_json_from_file('data/race_traits.json')
-ability_dict = read_json_from_file('data/abilities.json')
-weapon_ench_dict = read_json_from_file('data/weapon_enchantments.json')
-armour_ench_dict = read_json_from_file('data/armour_enchantments.json')
-item_ench_dict = read_json_from_file('data/item_enchantments.json')
-item_dict = read_json_from_file('data/items.json')
-character_dict = read_json_from_file('data/characters.json')
+def add_to_database(dictionary):
+    switch_dict = {
+        'abilities': ability_dict,
+        'armours': armour_dict,
+        'armour_enchantments': armour_ench_dict,
+        'characters': character_dict,
+        'items':  item_dict,
+        'item_enchantments': item_ench_dict,
+        'races': race_dict,
+        'race_traits': race_trait_dict,
+        'traits': trait_dict,
+        'weapons': weapon_dict,
+        'weapon_enchantments': weapon_ench_dict
+    }
+    if dictionary in switch_dict.keys():
+        append_dictionary(switch_dict[dictionary], '{}'.format(dictionary))
+        dump_to_json(switch_dict[dictionary], 'data/{}.json'.format(dictionary))
+    else:
+        options = []
+        for key in switch_dict:
+            options.append(key)
+        dictionary = input('valid options are {}, pick one: '.format(options))
+        add_to_database(dictionary)
 
-# append_dictionary(weapon_ench_dict, 'enchantments')
-# dump_to_json(weapon_ench_dict, 'data/weapon_enchantments.json')
-append_dictionary(weapon_dict, 'weapons')
-dump_to_json(weapon_dict, 'data/weapons.json')
+
+ability_dict = read_json_from_file('data/abilities.json')
+armour_dict = read_json_from_file('data/armours.json')
+armour_ench_dict = read_json_from_file('data/armour_enchantments.json')
+character_dict = read_json_from_file('data/characters.json')
+item_dict = read_json_from_file('data/items.json')
+item_ench_dict = read_json_from_file('data/item_enchantments.json')
+race_dict = read_json_from_file('data/races.json')
+race_trait_dict = read_json_from_file('data/race_traits.json')
+trait_dict = read_json_from_file('data/traits.json')
+weapon_dict = read_json_from_file('data/weapons.json')
+weapon_ench_dict = read_json_from_file('data/weapon_enchantments.json')
+
+if __name__ == '__main__':
+    dictionary = input('I want to add new: ')
+    while dictionary != 'done':
+        add_to_database(dictionary)
+        dictionary = input('I want to add new: ')
