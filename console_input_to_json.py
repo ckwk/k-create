@@ -34,18 +34,10 @@ def get_console_input_weapon(index):
     flavour = input('Enter weapon type: ')
     description = input('Enter description: ')
     damage = int(input('Enter max weapon damage: '))
-
-    # Add requirements to the 'requirements' dictionary
-    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
-    for i in range(len(requirements)):
-        current_req = 'req_{}'.format(i)
-        if requirements[current_req] != 'none':
-            req = input('Enter stat requirement: ')
-            if req == 'none':
-                for j in range(i, len(requirements)):
-                    requirements['req_{}'.format(j)] = 'none'
-            else:
-                requirements[current_req] = req
+    dex_scaling = int(input('Enter DEX Scaling: '))
+    str_scaling = int(input('Enter STR Scaling: '))
+    dex_req = int(input('Enter DEX Requirement: '))
+    str_req = int(input('Enter STR Requirement: '))
 
     # Add traits
     t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
@@ -68,6 +60,8 @@ def get_console_input_weapon(index):
             if weapon_ench_dict[key]["name"] == enchantment:
                 enchantment = weapon_ench_dict.get(key)
 
+    value = int(input('Enter value: '))
+
     # Is the item unique?
     unique = input('Unique? (t/f): ')
     if unique == "t":
@@ -79,9 +73,13 @@ def get_console_input_weapon(index):
                   'type': flavour,
                   'description': description,
                   'damage': damage,
-                  'requirements': requirements,
+                  'dex_scaling': dex_scaling,
+                  'str_scaling': str_scaling,
+                  'dex_req': dex_req,
+                  'str_req': str_req,
                   'traits': t_dict,
                   'enchantment': enchantment,
+                  'value': value,
                   'unique': unique
                   }
     attributes = {weapon: attributes}
@@ -94,18 +92,8 @@ def get_console_input_armour(index):
     flavour = input('Enter armour type: ')
     description = input('Enter description: ')
     resistance = int(input('Enter armour resistance: '))
-
-    # Add requirements to the 'requirements' dictionary
-    requirements = {'req_0': '', 'req_1': '', 'req_2': ''}
-    for i in range(len(requirements)):
-        current_req = 'req_{}'.format(i)
-        if requirements[current_req] != 'none':
-            req = input('Enter stat requirement: ')
-            if req == 'none':
-                for j in range(i, len(requirements)):
-                    requirements['req_{}'.format(j)] = 'none'
-            else:
-                requirements[current_req] = req
+    con_req = int(input('Enter CON Requirement: '))
+    str_req = int(input('Enter STR Requirement: '))
 
     # Add traits
     t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
@@ -120,6 +108,8 @@ def get_console_input_armour(index):
                 for key in trait_dict:
                     if trait_dict[key]["name"] == trait and trait_dict[key]["type"] == 'armour':
                         trait = trait_dict.get(key)
+                        t_dict[current_trait] = trait
+                        break
 
     # Add enchantments
     enchantment = input('Enter enchantment: ')
@@ -127,6 +117,8 @@ def get_console_input_armour(index):
         for key in armour_ench_dict:
             if armour_ench_dict[key]["name"] == enchantment:
                 enchantment = armour_ench_dict.get(key)
+
+    value = int(input('Enter value: '))
 
     # Is the item unique?
     unique = input('Unique? (t/f): ')
@@ -139,9 +131,11 @@ def get_console_input_armour(index):
                   'type': flavour,
                   'description': description,
                   'resistance': resistance,
-                  'requirements': requirements,
+                  'con_req': con_req,
+                  'str_req': str_req,
                   'traits': t_dict,
                   'enchantment': enchantment,
+                  'value': value,
                   'unique': unique
                   }
     attributes = {armour: attributes}
@@ -263,6 +257,8 @@ def get_console_input_item(index):
             if item_ench_dict[key]["name"] == enchantment:
                 enchantment = item_ench_dict.get(key)
 
+    value = int(input('Enter value: '))
+
     # Is the item unique?
     unique = input('Unique? (t/f): ')
     if unique == "t":
@@ -273,6 +269,7 @@ def get_console_input_item(index):
     attributes = {'name': name,
                   'type': flavour,
                   'enchantment': enchantment,
+                  'value': value,
                   'unique': unique
                   }
     attributes = {weapon: attributes}
@@ -284,7 +281,7 @@ def append_dictionary(dictionary, dict_type):
         'abilities': lambda: dictionary.update(get_console_input_ability(len(dictionary))),
         'armours': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
         'armour_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
-        'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
+        #'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
         'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
         'item_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
         'races': lambda: dictionary.update(get_console_input_race(len(dictionary))),
@@ -304,7 +301,7 @@ def dump_to_json(dic, directory):
     outfile = open(directory, 'w')
     json.dump(dic, outfile)
     outfile.close()
-    print(json.dumps(dic, indent=4))
+    #print(json.dumps(dic, indent=4))
 
 
 def read_json_from_file(directory):

@@ -1,0 +1,85 @@
+#:kivy 1.11.1
+
+<WeaponPage>:
+
+    # Background canvas colour
+    canvas:
+        Color:
+            rgba: 1, 1, 1, .175
+        Rectangle:
+            size: self.size
+
+    # Grid for top widgets (Name, Type, Damage, Stats, Enchantment, Image, Traits)
+    GridLayout:
+        cols: 2
+
+        # Box Layout to contain the left-side widgets (Name, Type, Damage, States, Enchantment)
+        GridLayout:
+            rows: 5
+            padding: 5, 5
+
+            # Layout for the top widgets (Name, Type)
+            GridLayout:
+                rows: 4
+                row_default_height: 35
+                row_force_default: True
+
+                Label:
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'bottom'
+                    text: 'Weapon Name'
+                TextInput:
+                    id: weapon_name
+                    multiline: False
+
+
+                Label:
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'bottom'
+                    text: 'Weapon Type'
+                TextInput:
+                    id: weapon_type
+                    multiline: False
+
+            # Layout to contain the Damage widget
+            GridLayout:
+                cols: 2
+                rows: 1
+                col_default_width: 70
+                row_default_height: 35
+                col_force_default: True
+                row_force_default: True
+
+                Label:
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'center'
+                    text: 'Damage ='
+                    width: 10
+                AnchorLayout:
+                    anchor_x: 'left'
+                    TextInput:
+                        id: weapon_damage
+                        multiline: False
+                        input_filter: 'int'
+
+            # Stats label
+            Label:
+                text_size: self.size
+                halign: 'left'
+                valign: 'center'
+                text: 'Required Stats'
+                width: 10
+
+            # Stats fields
+            GridLayout:
+                rows: 3
+                cols: 3
+                col_default_width: 70
+                row_default_height: 35
+                col_force_default: True
+                row_force_default: True
+
+

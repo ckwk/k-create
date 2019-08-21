@@ -1,1 +1,102 @@
-{}
+{
+	"trait 0": {
+		"name": "Pristine",
+		"type": "armour",
+		"description": "+20% AR",
+		"effects": {
+			"effect_0": "1.2",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 1": {
+		"name": "Sturdy",
+		"type": "armour",
+		"description": "+10% AR",
+		"effects": {
+			"effect_0": "1.1",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 2": {
+		"name": "Torn",
+		"type": "armour",
+		"description": "-50% AR",
+		"effects": {
+			"effect_0": "0.5",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 3": {
+		"name": "Shredded",
+		"type": "armour",
+		"description": "-100% AR",
+		"effects": {
+			"effect_0": "0",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 4": {
+		"name": "Damaged",
+		"type": "armour",
+		"description": "-20% AR",
+		"effects": {
+			"effect_0": "0.8",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 5": {
+		"name": "Worn",
+		"type": "armour",
+		"description": "-10% AR",
+		"effects": {
+			"effect_0": "0.9",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 6": {
+		"name": "Infused",
+		"type": "armour",
+		"description": "+20% Poison Resist",
+		"effects": {
+			"effect_0": "1.2",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 7": {
+		"name": "Vented",
+		"type": "armour",
+		"description": "+20% Fire Resist, -20% Ice Resist",
+		"effects": {
+			"effect_0": "1.2",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 8": {
+		"name": "Grounded",
+		"type": "armour",
+		"description": "+20% Lightning Resist",
+		"effects": {
+			"effect_0": "1.2",
+			"effect_1": "none",
+			"effect_2": "none"
+		}
+	},
+	"trait 9": {
+		"name": "Fur-Lined",
+		"type": "armour",
+		"description": "+20% Ice Resist, -20% Fire Resist",
+		"effects": {
+			"effect_0": "1.2",
+			"effect_1": "0.8",
+			"effect_2": "none"
+		}
+	}
+}
