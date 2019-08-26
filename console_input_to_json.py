@@ -4,12 +4,14 @@ import json
 def get_console_input_race(index):
     race = 'race {}'.format(index)
     name = input('Enter race name: ')
+    flavour = input('Enter type: ')
     description = input('Enter description: ')
     playable = input('Playable? ')
     favoured_stat_1 = input('Enter most favoured stat: ')
     favoured_stat_2 = input('Enter second most favoured stat: ')
 
     attributes = {'name': name,
+                  'type': flavour,
                   'description': description,
                   'playable': playable,
                   'favoured_stat_1': favoured_stat_1,

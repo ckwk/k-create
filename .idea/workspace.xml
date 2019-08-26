@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="add1d086-fc95-463b-ae0f-356f2245e2c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/console_input_to_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/console_input_to_json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/races.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/races.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/console_input_to_json.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="42" lean-forward="true" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+            <state relative-caret-position="153">
+              <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding>
                 <element signature="e#1004#3146#0" />
                 <element signature="e#3190#5344#0" />
@@ -53,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/data/armours.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5197" selection-start-column="5197" selection-end-column="5197" />
+              <caret line="217" column="1" selection-start-line="217" selection-start-column="1" selection-end-line="217" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -250,7 +249,7 @@
       <workItem from="1562908485731" duration="4405000" />
       <workItem from="1562953272351" duration="9658000" />
       <workItem from="1565204990795" duration="2037000" />
-      <workItem from="1566097880592" duration="21952000" />
+      <workItem from="1566097880592" duration="22594000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic weapon framework and writing to json files">
       <created>1562645520703</created>
@@ -347,7 +346,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75411000" />
+    <option name="totallyTimeSpent" value="76053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
@@ -469,7 +468,7 @@
     <entry file="file://$PROJECT_DIR$/data/armours.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="5197" selection-start-column="5197" selection-end-column="5197" />
+          <caret line="217" column="1" selection-start-line="217" selection-start-column="1" selection-end-line="217" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -492,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/console_input_to_json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="42" lean-forward="true" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        <state relative-caret-position="153">
+          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
           <folding>
             <element signature="e#1004#3146#0" />
             <element signature="e#3190#5344#0" />
