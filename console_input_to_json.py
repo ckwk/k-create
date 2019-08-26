@@ -39,20 +39,6 @@ def get_console_input_weapon(index):
     dex_req = int(input('Enter DEX Requirement: '))
     str_req = int(input('Enter STR Requirement: '))
 
-    # Add traits
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
-    for i in range(len(t_dict)):
-        current_trait = 'trait_{}'.format(i)
-        if t_dict[current_trait] != 'none':
-            trait = input('Enter possible trait: ')
-            if trait == 'none':
-                for j in range(i, len(t_dict)):
-                    t_dict['trait_{}'.format(j)] = 'none'
-            else:
-                for key in trait_dict:
-                    if trait_dict[key]["name"] == trait and trait_dict[key]["type"] == 'weapon':
-                        trait = trait_dict.get(key)
-
     # Add enchantments
     enchantment = input('Enter enchantment: ')
     if enchantment != 'none':
@@ -77,7 +63,6 @@ def get_console_input_weapon(index):
                   'str_scaling': str_scaling,
                   'dex_req': dex_req,
                   'str_req': str_req,
-                  'traits': t_dict,
                   'enchantment': enchantment,
                   'value': value,
                   'unique': unique
@@ -90,26 +75,11 @@ def get_console_input_armour(index):
     armour = 'armour {}'.format(index)
     name = input('Enter armour name: ')
     flavour = input('Enter armour type: ')
+    slot = input('Enter armour slot: ')
     description = input('Enter description: ')
     resistance = int(input('Enter armour resistance: '))
     con_req = int(input('Enter CON Requirement: '))
     str_req = int(input('Enter STR Requirement: '))
-
-    # Add traits
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
-    for i in range(len(t_dict)):
-        current_trait = 'trait_{}'.format(i)
-        if t_dict[current_trait] != 'none':
-            trait = input('Enter possible trait: ')
-            if trait == 'none':
-                for j in range(i, len(t_dict)):
-                    t_dict['trait_{}'.format(j)] = 'none'
-            else:
-                for key in trait_dict:
-                    if trait_dict[key]["name"] == trait and trait_dict[key]["type"] == 'armour':
-                        trait = trait_dict.get(key)
-                        t_dict[current_trait] = trait
-                        break
 
     # Add enchantments
     enchantment = input('Enter enchantment: ')
@@ -129,11 +99,11 @@ def get_console_input_armour(index):
 
     attributes = {'name': name,
                   'type': flavour,
+                  'slot': slot,
                   'description': description,
                   'resistance': resistance,
                   'con_req': con_req,
                   'str_req': str_req,
-                  'traits': t_dict,
                   'enchantment': enchantment,
                   'value': value,
                   'unique': unique
