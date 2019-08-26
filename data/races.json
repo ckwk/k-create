@@ -1,6 +1,7 @@
 {
 	"race 0": {
 		"name": "Kiri",
+		"type": "living",
 		"description": "none",
 		"playable": "true",
 		"favoured_stat_1": "DEX",
@@ -8,6 +9,7 @@
 	},
 	"race 1": {
 		"name": "Human",
+		"type": "living",
 		"description": "none",
 		"playable": "true",
 		"favoured_stat_1": "CON",
@@ -15,6 +17,7 @@
 	},
 	"race 2": {
 		"name": "Shinn",
+		"type": "living",
 		"description": "none",
 		"playable": "true",
 		"favoured_stat_1": "PRS",
@@ -22,6 +25,7 @@
 	},
 	"race 3": {
 		"name": "Ancient",
+		"type": "construct",
 		"description": "none",
 		"playable": "true",
 		"favoured_stat_1": "CON",
@@ -29,6 +33,7 @@
 	},
 	"race 4": {
 		"name": "Ohauru",
+		"type": "living",
 		"description": "none",
 		"playable": "true",
 		"favoured_stat_1": "INT",
