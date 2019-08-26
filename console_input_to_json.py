@@ -5,24 +5,39 @@ def get_console_input_race(index):
     race = 'race {}'.format(index)
     name = input('Enter race name: ')
     description = input('Enter description: ')
-
-    # Add traits
-    t_dict = {'trait_0': '', 'trait_1': '', 'trait_2': '', 'trait_3': '', 'trait_4': ''}
-    for i in range(len(t_dict)):
-        current_trait = 'trait_{}'.format(i)
-        if t_dict[current_trait] != 'none':
-            trait = input('Enter possible trait: ')
-            if trait == 'none':
-                for j in range(i, len(t_dict)):
-                    t_dict['trait_{}'.format(j)] = 'none'
-            else:
-                for key in race_trait_dict:
-                    if race_trait_dict[key]["name"] == trait:
-                        trait = race_trait_dict.get(key)
+    playable = input('Playable? ')
+    favoured_stat_1 = input('Enter most favoured stat: ')
+    favoured_stat_2 = input('Enter second most favoured stat: ')
 
     attributes = {'name': name,
                   'description': description,
-                  'traits': t_dict
+                  'playable': playable,
+                  'favoured_stat_1': favoured_stat_1,
+                  'favoured_stat_2': favoured_stat_2
+                  }
+    attributes = {race: attributes}
+    return attributes
+
+
+def get_console_input_character(index):
+    race = 'character {}'.format(index)
+    name = input('Enter character name: ')
+    description = input('Enter description: ')
+    level = int(input('Enter character level:'))
+    STR = int(input('Enter STR value: '))
+    DEX = int(input('Enter DEX value: '))
+    CON = int(input('Enter CON value: '))
+    INT = int(input('Enter INT value: '))
+    PRS = int(input('Enter PRS value: '))
+
+    attributes = {'name': name,
+                  'description': description,
+                  'level': level,
+                  'STR': STR,
+                  'DEX': DEX,
+                  'CON': CON,
+                  'INT': INT,
+                  'PRS': PRS
                   }
     attributes = {race: attributes}
     return attributes
@@ -251,7 +266,7 @@ def append_dictionary(dictionary, dict_type):
         'abilities': lambda: dictionary.update(get_console_input_ability(len(dictionary))),
         'armours': lambda: dictionary.update(get_console_input_armour(len(dictionary))),
         'armour_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
-        #'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
+        'characters': lambda: dictionary.update(get_console_input_character(len(dictionary))),
         'items': lambda: dictionary.update(get_console_input_item(len(dictionary))),
         'item_enchantments': lambda: dictionary.update(get_console_input_enchantment(len(dictionary))),
         'races': lambda: dictionary.update(get_console_input_race(len(dictionary))),

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="add1d086-fc95-463b-ae0f-356f2245e2c1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/enemies.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/console_input_to_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/console_input_to_json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/armours.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/armours.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,15 +14,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/console_input_to_json.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+            <state relative-caret-position="580">
+              <caret line="40" column="19" lean-forward="true" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
               <folding>
-                <element signature="e#53#960#0" />
                 <element signature="e#1004#3146#0" />
                 <element signature="e#3190#5344#0" />
+                <element signature="e#5387#6275#0" />
                 <element signature="e#6320#7697#0" />
                 <element signature="e#7746#9033#0" />
                 <element signature="e#9075#9806#0" />
@@ -43,11 +44,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/armours.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="4653" selection-start-column="4653" selection-end-column="4653" />
+              <caret column="5197" selection-start-column="5197" selection-end-column="5197" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/enemies.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -109,13 +119,14 @@
         <option value="$PROJECT_DIR$/data/items.json" />
         <option value="$PROJECT_DIR$/data/traits.json" />
         <option value="$PROJECT_DIR$/data/armours.json" />
+        <option value="$PROJECT_DIR$/data/enemies.json" />
         <option value="$PROJECT_DIR$/console_input_to_json.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-2121" />
-    <option name="y" value="-12" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="354" />
+    <option name="y" value="-19" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -243,7 +254,7 @@
       <workItem from="1562908485731" duration="4405000" />
       <workItem from="1562953272351" duration="9658000" />
       <workItem from="1565204990795" duration="2037000" />
-      <workItem from="1566097880592" duration="19381000" />
+      <workItem from="1566097880592" duration="20744000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic weapon framework and writing to json files">
       <created>1562645520703</created>
@@ -340,13 +351,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72840000" />
+    <option name="totallyTimeSpent" value="74203000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2568" y="-8" width="2576" height="1456" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2599364" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2599364" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32955405" />
@@ -356,7 +368,7 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32955405" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.32955405" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.32955405" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.39984882" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -454,13 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/traits.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-980">
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/items.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -468,14 +473,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/armours.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5197" selection-start-column="5197" selection-end-column="5197" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/enemies.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/traits.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-980">
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/console_input_to_json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+        <state relative-caret-position="580">
+          <caret line="40" column="19" lean-forward="true" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
           <folding>
-            <element signature="e#53#960#0" />
             <element signature="e#1004#3146#0" />
             <element signature="e#3190#5344#0" />
+            <element signature="e#5387#6275#0" />
             <element signature="e#6320#7697#0" />
             <element signature="e#7746#9033#0" />
             <element signature="e#9075#9806#0" />
@@ -484,13 +510,6 @@
             <element signature="e#11135#11240#0" />
             <element signature="e#11280#12115#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/armours.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4653" selection-start-column="4653" selection-end-column="4653" />
         </state>
       </provider>
     </entry>
