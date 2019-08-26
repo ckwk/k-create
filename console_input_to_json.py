@@ -20,7 +20,7 @@ def get_console_input_race(index):
 
 
 def get_console_input_character(index):
-    race = 'character {}'.format(index)
+    char = 'character {}'.format(index)
     name = input('Enter character name: ')
     description = input('Enter description: ')
     level = int(input('Enter character level:'))
@@ -39,7 +39,7 @@ def get_console_input_character(index):
                   'INT': INT,
                   'PRS': PRS
                   }
-    attributes = {race: attributes}
+    attributes = {char: attributes}
     return attributes
 
 

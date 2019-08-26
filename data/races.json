@@ -1,1 +1,37 @@
-{}
+{
+	"race 0": {
+		"name": "Kiri",
+		"description": "none",
+		"playable": "true",
+		"favoured_stat_1": "DEX",
+		"favoured_stat_2": "PRS"
+	},
+	"race 1": {
+		"name": "Human",
+		"description": "none",
+		"playable": "true",
+		"favoured_stat_1": "CON",
+		"favoured_stat_2": "STR"
+	},
+	"race 2": {
+		"name": "Shinn",
+		"description": "none",
+		"playable": "true",
+		"favoured_stat_1": "PRS",
+		"favoured_stat_2": "INT"
+	},
+	"race 3": {
+		"name": "Ancient",
+		"description": "none",
+		"playable": "true",
+		"favoured_stat_1": "CON",
+		"favoured_stat_2": "DEX"
+	},
+	"race 4": {
+		"name": "Ohauru",
+		"description": "none",
+		"playable": "true",
+		"favoured_stat_1": "INT",
+		"favoured_stat_2": "STR"
+	}
+}
